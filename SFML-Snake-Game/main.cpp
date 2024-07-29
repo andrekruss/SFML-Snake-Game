@@ -22,6 +22,9 @@ int main()
                 window.close();
         }
 
+        snake.Input();
+        snake.Logic();
+
         window.clear(sf::Color::Black);
         snake.Draw(window);
         map.Draw(window);
