@@ -7,7 +7,7 @@ Snake::Snake(int windowWidth, int windowHeight)
 	this->snakeHead.setSize(sf::Vector2f(10.0f, 10.0f));
 	this->snakeHead.setFillColor(sf::Color::Green);
 	this->snakeHead.setPosition(currentPosition);
-	this->speed = 2.5f;
+	this->speed = 1.0f;
 	this->currentDirection = RIGHT;
 }
 

@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Classes/Map/Map.h"
 #include "Classes/Snake/Snake.h"
+#include "Classes/Fruit/Fruit.h"
 
 int main()
 {
@@ -13,6 +14,7 @@ int main()
 
     Map map(windowWidth, windowHeight);
     Snake snake(windowWidth, windowHeight);
+    Fruit fruit(windowWidth, windowHeight);
 
     while (window.isOpen()) {
 
@@ -27,6 +29,7 @@ int main()
 
         window.clear(sf::Color::Black);
         snake.Draw(window);
+        fruit.Draw(window);
         map.Draw(window);
         window.display();
     }
