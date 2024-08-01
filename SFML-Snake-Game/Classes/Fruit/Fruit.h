@@ -6,6 +6,8 @@ class Fruit
 private:
 	sf::RectangleShape fruit;
 	sf::Vector2f position;
+
+	sf::Vector2f generateRandomPosition(int windowWidth, int windowHeight);
 public:
 	Fruit(int windowWidth, int windowHeight);
 	~Fruit();

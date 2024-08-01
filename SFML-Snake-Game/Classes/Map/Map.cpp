@@ -16,8 +16,8 @@ void Map::Setup()
 
 void Map::Draw(sf::RenderWindow& window)
 {
-	for (int i = 0; i < mapWidth; i++) {
-		for (int j = 0; j < mapHeight; j++) {
+	for (int i = 0; i < mapWidth; i+=10) {
+		for (int j = 0; j < mapHeight; j+=10) {
 			if (i == 0 || i == mapWidth - 10 || j == 0 || j == mapHeight - 10)
 			{
 				sf::RectangleShape rectangleShape;
