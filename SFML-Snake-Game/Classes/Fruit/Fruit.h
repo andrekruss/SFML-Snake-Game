@@ -15,4 +15,5 @@ public:
 	void Draw(sf::RenderWindow& window);
 	void Input();
 	void Logic();
+	sf::Vector2f GetFruitPosition();
 };

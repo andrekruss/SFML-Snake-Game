@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Classes/Map/Map.h"
 #include "Classes/Snake/Snake.h"
 #include "Classes/Fruit/Fruit.h"
@@ -38,8 +39,9 @@ int main()
             frameTime = timer.asMilliseconds() / 1000.0;
 
             snake.Input();
-            gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
             snake.Update((float)frameTime);
+            gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
+            gameManager.CheckSnakeFruitCollision(snake.GetSnakeHeadPosition(), fruit.GetFruitPosition());
 
             window.clear(sf::Color::Black);
             snake.Draw(window);
@@ -51,6 +53,8 @@ int main()
             break;
         }
     }
+
+    std::cout << "Score = " << gameManager.GetScore() << std::endl;
 
     return 0;
 }

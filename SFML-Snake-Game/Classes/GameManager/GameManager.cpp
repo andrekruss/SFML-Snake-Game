@@ -26,3 +26,14 @@ void GameManager::CheckMapBorderCollision(int mapWidth, int mapHeight, sf::Vecto
 		return;
 	}
 }
+
+void GameManager::CheckSnakeFruitCollision(sf::Vector2f snakeHeadPosition, sf::Vector2f fruitPosition)
+{
+	if (snakeHeadPosition.x == fruitPosition.x && snakeHeadPosition.y == fruitPosition.y)
+		this->score += 10;
+}
+
+int GameManager::GetScore()
+{
+	return this->score;
+}

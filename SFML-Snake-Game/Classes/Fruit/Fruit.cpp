@@ -43,3 +43,8 @@ void Fruit::Input()
 void Fruit::Logic()
 {
 }
+
+sf::Vector2f Fruit::GetFruitPosition()
+{
+	return this->fruit.getPosition();
+}
