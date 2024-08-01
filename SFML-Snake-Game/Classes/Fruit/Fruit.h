@@ -16,4 +16,5 @@ public:
 	void Input();
 	void Logic();
 	sf::Vector2f GetFruitPosition();
+	void RespawnFruit(int windowWidth, int windowHeight);
 };

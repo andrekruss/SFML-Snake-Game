@@ -48,3 +48,8 @@ sf::Vector2f Fruit::GetFruitPosition()
 {
 	return this->fruit.getPosition();
 }
+
+void Fruit::RespawnFruit(int windowWidth, int windowHeight)
+{
+	this->fruit.setPosition(generateRandomPosition(windowWidth, windowHeight));
+}

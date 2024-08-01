@@ -41,7 +41,9 @@ int main()
             snake.Input();
             snake.Update((float)frameTime);
             gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
-            gameManager.CheckSnakeFruitCollision(snake.GetSnakeHeadPosition(), fruit.GetFruitPosition());
+            if (gameManager.CheckSnakeFruitCollision(snake.GetSnakeHeadPosition(), fruit.GetFruitPosition())) {
+                fruit.RespawnFruit(windowWidth, windowHeight);
+            }
 
             window.clear(sf::Color::Black);
             snake.Draw(window);
