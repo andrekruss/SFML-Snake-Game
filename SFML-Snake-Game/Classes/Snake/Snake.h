@@ -15,7 +15,7 @@ public:
 	~Snake();
 	void Setup();
 	void Input();
-	void Update(float frameTime);
+	void Update();
 	void Draw(sf::RenderWindow& window);
 	sf::Vector2f GetSnakeHeadPosition();
 	void IncrementTail();

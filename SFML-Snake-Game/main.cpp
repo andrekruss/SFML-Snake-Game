@@ -21,8 +21,7 @@ int main()
     GameManager gameManager;
 
     sf::Clock clock;
-    sf::Time timer;
-    double frameTime;
+    int moveInterval = 50;
 
     while (window.isOpen()) {
 
@@ -34,12 +33,13 @@ int main()
 
         if (!gameManager.CheckGameOver())
         {
-
-            timer = clock.restart();
-            frameTime = timer.asMilliseconds() / 1000.0;
-
             snake.Input();
-            snake.Update((float)frameTime);
+
+            if (clock.getElapsedTime().asMilliseconds() >= moveInterval) {
+                snake.Update();
+                clock.restart();
+            }
+
             gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
             if (gameManager.CheckSnakeFruitCollision(snake.GetSnakeHeadPosition(), fruit.GetFruitPosition())) {
                 fruit.RespawnFruit(windowWidth, windowHeight);

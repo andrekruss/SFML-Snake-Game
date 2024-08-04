@@ -8,7 +8,7 @@ Snake::Snake(int windowWidth, int windowHeight)
 	sf::Vector2f snakeHeadPosition((float) windowWidth / 2, (float) windowHeight / 2);
 	SnakeSegment snakeHead(snakeHeadPosition, eDirection::RIGHT);
 	this->snake.push_back(snakeHead);
-	this->speed = 5.0f;
+	this->speed = 10.0f;
 }
 
 Snake::~Snake()
@@ -29,17 +29,19 @@ void Snake::Draw(sf::RenderWindow& window)
 
 void Snake::Input()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	eDirection currentDirection = this->snake[0].GetCurrentDirection();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && currentDirection != eDirection::LEFT)
 		this->snake[0].SetCurrentDirection(eDirection::RIGHT);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && currentDirection != eDirection::UP)
 		this->snake[0].SetCurrentDirection(eDirection::DOWN);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && currentDirection != eDirection::RIGHT)
 		this->snake[0].SetCurrentDirection(eDirection::LEFT);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && currentDirection != eDirection::DOWN)
 		this->snake[0].SetCurrentDirection(eDirection::UP);
 }
 
-void Snake::Update(float frameTime)
+void Snake::Update()
 {
 	for (int i = this->snake.size() - 1; i > 0; i--) {
 		this->snake[i].SetSnakeSegmentPosition(this->snake[i - 1].GetSnakeSegmentPosition());
