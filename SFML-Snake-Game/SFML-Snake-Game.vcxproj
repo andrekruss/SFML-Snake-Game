@@ -148,13 +148,16 @@
     <ClCompile Include="Classes\Fruit\Fruit.cpp" />
     <ClCompile Include="Classes\GameManager\GameManager.cpp" />
     <ClCompile Include="Classes\Map\Map.cpp" />
+    <ClCompile Include="Classes\SnakeSegment\SnakeSegment.cpp" />
     <ClCompile Include="Classes\Snake\Snake.cpp" />
+    <ClCompile Include="Enums\eDirection.h" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Classes\Fruit\Fruit.h" />
     <ClInclude Include="Classes\GameManager\GameManager.h" />
     <ClInclude Include="Classes\Map\Map.h" />
+    <ClInclude Include="Classes\SnakeSegment\SnakeSegment.h" />
     <ClInclude Include="Classes\Snake\Snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

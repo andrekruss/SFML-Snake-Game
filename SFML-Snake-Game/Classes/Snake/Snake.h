@@ -1,20 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
-enum eDirection
-{
-	LEFT,
-	UP,
-	RIGHT,
-	DOWN
-};
+#include <vector>
+#include "../../Enums/eDirection.h"
+#include "../SnakeSegment/SnakeSegment.h"
 
 class Snake
 {
 private:
-	sf::RectangleShape snakeHead;
+	std::vector<SnakeSegment> snake;
 	float speed;
-	eDirection currentDirection;
 
 public:
 	Snake(int windowWidth, int windowHeight);
@@ -24,4 +18,5 @@ public:
 	void Update(float frameTime);
 	void Draw(sf::RenderWindow& window);
 	sf::Vector2f GetSnakeHeadPosition();
+	void IncrementTail();
 };

@@ -43,6 +43,7 @@ int main()
             gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
             if (gameManager.CheckSnakeFruitCollision(snake.GetSnakeHeadPosition(), fruit.GetFruitPosition())) {
                 fruit.RespawnFruit(windowWidth, windowHeight);
+                snake.IncrementTail();
             }
 
             window.clear(sf::Color::Black);
