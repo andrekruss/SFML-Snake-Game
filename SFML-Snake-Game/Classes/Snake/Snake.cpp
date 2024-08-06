@@ -72,6 +72,16 @@ sf::Vector2f Snake::GetSnakeHeadPosition()
 	return this->snake[0].GetSnakeSegmentPosition();
 }
 
+int Snake::GetSnakeSize()
+{
+	return this->snake.size();
+}
+
+SnakeSegment Snake::GetSnakeSegment(int index)
+{
+	return this->snake[index];
+}
+
 void Snake::IncrementTail()
 {
 	int lastSegmentIndex = this->snake.size() - 1;

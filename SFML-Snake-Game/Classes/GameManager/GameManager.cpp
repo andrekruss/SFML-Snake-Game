@@ -51,6 +51,18 @@ bool GameManager::CheckSnakeFruitCollision(sf::Vector2f snakeHeadPosition, sf::V
 	return false;
 }
 
+void GameManager::CheckSnakeSelfCollision(Snake snake)
+{
+	sf::Vector2f snakeHeadPosition = snake.GetSnakeHeadPosition();
+	for (int i = 1; i < snake.GetSnakeSize(); i++) {
+		sf::Vector2f segmentPosition = snake.GetSnakeSegment(i).GetSnakeSegmentPosition();
+		if (snakeHeadPosition.x == segmentPosition.x && snakeHeadPosition.y == segmentPosition.y) {
+			this->isGameOver = true;
+			return;
+		}
+	}
+}
+
 int GameManager::GetScore()
 {
 	return this->score;

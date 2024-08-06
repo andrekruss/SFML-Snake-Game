@@ -31,6 +31,13 @@ int main()
                 window.close();
         }
 
+        gameManager.CheckSnakeSelfCollision(snake);
+        gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
+        if (gameManager.CheckSnakeFruitCollision(snake.GetSnakeHeadPosition(), fruit.GetFruitPosition())) {
+            fruit.RespawnFruit(windowWidth, windowHeight);
+            snake.IncrementTail();
+        }
+
         gameManager.Input();
 
         if (gameManager.CheckGamePauseStatus())
@@ -43,12 +50,6 @@ int main()
             if (clock.getElapsedTime().asMilliseconds() >= moveInterval) {
                 snake.Update();
                 clock.restart();
-            }
-
-            gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
-            if (gameManager.CheckSnakeFruitCollision(snake.GetSnakeHeadPosition(), fruit.GetFruitPosition())) {
-                fruit.RespawnFruit(windowWidth, windowHeight);
-                snake.IncrementTail();
             }
 
             window.clear(sf::Color::Black);
