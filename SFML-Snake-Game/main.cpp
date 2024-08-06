@@ -7,7 +7,7 @@
 
 int main()
 {
-    int windowWidth = 800, windowHeight = 600;
+    int windowWidth = 400, windowHeight = 400;
     sf::RenderWindow window(
         sf::VideoMode(windowWidth, windowHeight), 
         "Snaaaake!", 
@@ -21,7 +21,7 @@ int main()
     GameManager gameManager;
 
     sf::Clock clock;
-    int moveInterval = 50;
+    int moveInterval = 75;
 
     while (window.isOpen()) {
 
@@ -30,6 +30,11 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        gameManager.Input();
+
+        if (gameManager.CheckGamePauseStatus())
+            continue;
 
         if (!gameManager.CheckGameOver())
         {

@@ -3,11 +3,26 @@
 GameManager::GameManager()
 {
 	this->isGameOver = false;
+	this->isGamePaused = false;
 	this->score = 0;
 }
 
 GameManager::~GameManager()
 {
+}
+
+void GameManager::Input()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P) && !this->isGamePaused) {
+		while (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
+			this->isGamePaused = true;
+		}
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P) && this->isGamePaused) {
+		while (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
+			this->isGamePaused = false;
+		}
+	}
 }
 
 bool GameManager::CheckGameOver()
@@ -39,4 +54,9 @@ bool GameManager::CheckSnakeFruitCollision(sf::Vector2f snakeHeadPosition, sf::V
 int GameManager::GetScore()
 {
 	return this->score;
+}
+
+bool GameManager::CheckGamePauseStatus()
+{
+	return this->isGamePaused;
 }
