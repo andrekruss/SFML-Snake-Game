@@ -159,6 +159,7 @@
     <ClInclude Include="Classes\Map\Map.h" />
     <ClInclude Include="Classes\SnakeSegment\SnakeSegment.h" />
     <ClInclude Include="Classes\Snake\Snake.h" />
+    <ClInclude Include="Enums\eFruitType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

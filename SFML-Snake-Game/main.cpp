@@ -19,6 +19,8 @@ int main()
     Snake snake(windowWidth, windowHeight);
     Fruit fruit(windowWidth, windowHeight);
     GameManager gameManager;
+    int normalFruitScore = 10;
+    int superFruitScore = 50;
 
     sf::Clock clock;
     int moveInterval = 75;
@@ -31,36 +33,33 @@ int main()
                 window.close();
         }
 
-        gameManager.CheckSnakeSelfCollision(snake);
-        gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
-        if (gameManager.CheckSnakeFruitCollision(snake.GetSnakeHeadPosition(), fruit.GetFruitPosition())) {
-            fruit.RespawnFruit(windowWidth, windowHeight);
-            snake.IncrementTail();
-        }
+        if (gameManager.CheckGameOver())
+            break;
 
         gameManager.Input();
 
         if (gameManager.CheckGamePauseStatus())
             continue;
 
-        if (!gameManager.CheckGameOver())
-        {
-            snake.Input();
+        snake.Input();
 
-            if (clock.getElapsedTime().asMilliseconds() >= moveInterval) {
-                snake.Update();
-                clock.restart();
-            }
+        if (clock.getElapsedTime().asMilliseconds() >= moveInterval) {
+            snake.Update();
+            clock.restart();
+        }
 
-            window.clear(sf::Color::Black);
-            snake.Draw(window);
-            fruit.Draw(window);
-            map.Draw(window);
-            window.display();
+        gameManager.CheckSnakeSelfCollision(snake);
+        gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
+        if (gameManager.CheckSnakeFruitCollision(snake, fruit)) {
+            fruit.RespawnFruit(windowWidth, windowHeight);
+            snake.IncrementTail();
         }
-        else {
-            break;
-        }
+
+        window.clear(sf::Color::Black);
+        snake.Draw(window);
+        fruit.Draw(window);
+        map.Draw(window);
+        window.display();
     }
 
     std::cout << "Snake last position: " << snake.GetSnakeHeadPosition().x << " " << snake.GetSnakeHeadPosition().y << std::endl;

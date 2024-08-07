@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "../../Enums/eFruitType.h"
 
 GameManager::GameManager()
 {
@@ -42,10 +43,16 @@ void GameManager::CheckMapBorderCollision(int mapWidth, int mapHeight, sf::Vecto
 	}
 }
 
-bool GameManager::CheckSnakeFruitCollision(sf::Vector2f snakeHeadPosition, sf::Vector2f fruitPosition)
+bool GameManager::CheckSnakeFruitCollision(Snake snake, Fruit fruit)
 {
+	sf::Vector2f snakeHeadPosition = snake.GetSnakeHeadPosition();
+	sf::Vector2f fruitPosition = fruit.GetFruitPosition();
 	if (snakeHeadPosition.x == fruitPosition.x && snakeHeadPosition.y == fruitPosition.y) {
-		this->score += 10;
+		eFruitType fruitType = fruit.GetFruitType();
+		if (fruitType == eFruitType::NORMAL)
+			this->score += 10;
+		else if (fruitType == eFruitType::NORMAL)
+			this->score += 50;
 		return true;
 	}
 	return false;

@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../Snake/Snake.h"
+#include "../Fruit/Fruit.h"
 
 class GameManager
 {
@@ -14,7 +15,7 @@ public:
 	void Input();
 	bool CheckGameOver();
 	void CheckMapBorderCollision(int mapWidth, int mapHeight, sf::Vector2f snakeHeadPosition);
-	bool CheckSnakeFruitCollision(sf::Vector2f snakeHeadPosition, sf::Vector2f fruitPosition);
+	bool CheckSnakeFruitCollision(Snake snake, Fruit fruit);
 	void CheckSnakeSelfCollision(Snake snake);
 	int GetScore();
 	bool CheckGamePauseStatus();

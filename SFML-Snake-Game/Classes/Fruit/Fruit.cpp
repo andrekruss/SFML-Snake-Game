@@ -1,8 +1,8 @@
 #include "Fruit.h"
 #include <time.h>
-#include <iostream>
+#include <iostream>	
 
-sf::Vector2f Fruit::generateRandomPosition(int windowWidth, int windowHeight)
+sf::Vector2f Fruit::GenerateRandomPosition(int windowWidth, int windowHeight)
 {
 	srand(time(0));
 	int xLowerLimit = 1;
@@ -14,12 +14,22 @@ sf::Vector2f Fruit::generateRandomPosition(int windowWidth, int windowHeight)
 	return sf::Vector2f(x, y);
 }
 
+eFruitType Fruit::GenerateFruitType()
+{
+	srand(time(0));
+	int randomValue = rand() % 20 + 1;
+	if (randomValue == 1)
+		return eFruitType::SUPER;
+	return eFruitType::NORMAL;
+}
+
 Fruit::Fruit(int windowWidth, int windowHeight)
 {
 	this->fruit = sf::RectangleShape();
 	this->fruit.setSize(sf::Vector2f(10.0f, 10.0f));
-	this->fruit.setFillColor(sf::Color::Yellow);
-	this->fruit.setPosition(generateRandomPosition(windowWidth, windowHeight));
+	this->type = GenerateFruitType();
+	SetFruitColor();
+	this->fruit.setPosition(GenerateRandomPosition(windowWidth, windowHeight));
 	std::cout << "Current Fruit position: " << this->fruit.getPosition().x << " " << this->fruit.getPosition().y << std::endl;
 }
 
@@ -49,7 +59,22 @@ sf::Vector2f Fruit::GetFruitPosition()
 	return this->fruit.getPosition();
 }
 
+eFruitType Fruit::GetFruitType()
+{
+	return this->type;
+}
+
 void Fruit::RespawnFruit(int windowWidth, int windowHeight)
 {
-	this->fruit.setPosition(generateRandomPosition(windowWidth, windowHeight));
+	this->fruit.setPosition(GenerateRandomPosition(windowWidth, windowHeight));
+	this->type = GenerateFruitType();
+	SetFruitColor();
+}
+
+void Fruit::SetFruitColor()
+{
+	if (this->type == eFruitType::NORMAL)
+		this->fruit.setFillColor(sf::Color::Yellow);
+	else if (this->type == eFruitType::SUPER)
+		this->fruit.setFillColor(sf::Color::Magenta);
 }

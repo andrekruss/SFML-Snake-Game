@@ -53,5 +53,8 @@
     <ClInclude Include="Classes\SnakeSegment\SnakeSegment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Enums\eFruitType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
