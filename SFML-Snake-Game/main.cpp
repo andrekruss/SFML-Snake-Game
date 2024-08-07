@@ -63,6 +63,7 @@ int main()
         }
     }
 
+    std::cout << "Snake last position: " << snake.GetSnakeHeadPosition().x << " " << snake.GetSnakeHeadPosition().y << std::endl;
     std::cout << "Score = " << gameManager.GetScore() << std::endl;
 
     return 0;

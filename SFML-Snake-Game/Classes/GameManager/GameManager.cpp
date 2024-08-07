@@ -32,11 +32,11 @@ bool GameManager::CheckGameOver()
 
 void GameManager::CheckMapBorderCollision(int mapWidth, int mapHeight, sf::Vector2f snakeHeadPosition)
 {
-	if (snakeHeadPosition.x > mapWidth - 10 || snakeHeadPosition.x < 10) {
+	if (snakeHeadPosition.x >= mapWidth - 10 || snakeHeadPosition.x < 10) {
 		this->isGameOver = true;
 		return;
 	}
-	if (snakeHeadPosition.y > mapHeight - 10 || snakeHeadPosition.y < 10) {
+	if (snakeHeadPosition.y >= mapHeight - 10 || snakeHeadPosition.y < 10) {
 		this->isGameOver = true;
 		return;
 	}
