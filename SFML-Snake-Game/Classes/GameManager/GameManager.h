@@ -14,9 +14,9 @@ public:
 	~GameManager();
 	void Input();
 	bool CheckGameOver();
-	void CheckMapBorderCollision(int mapWidth, int mapHeight, sf::Vector2f snakeHeadPosition);
+	bool CheckMapBorderCollision(int mapWidth, int mapHeight, sf::Vector2f snakeHeadPosition);
 	bool CheckSnakeFruitCollision(Snake snake, Fruit fruit);
-	void CheckSnakeSelfCollision(Snake snake);
+	bool CheckSnakeSelfCollision(Snake snake);
 	int GetScore();
 	bool CheckGamePauseStatus();
 };

@@ -4,6 +4,7 @@
 #include "Classes/Snake/Snake.h"
 #include "Classes/Fruit/Fruit.h"
 #include "Classes/GameManager/GameManager.h"
+#include "Classes/GameOverScreen/GameOverScreen.h"
 
 int main()
 {
@@ -19,6 +20,9 @@ int main()
     Snake snake(windowWidth, windowHeight);
     Fruit fruit(windowWidth, windowHeight);
     GameManager gameManager;
+    GameOverScreen gameOverScreen;
+    gameOverScreen.Setup(windowWidth, windowHeight);
+
     int normalFruitScore = 10;
     int superFruitScore = 50;
 
@@ -33,8 +37,12 @@ int main()
                 window.close();
         }
 
-        if (gameManager.CheckGameOver())
-            break;
+        if (gameManager.CheckGameOver()) {
+            window.clear(sf::Color::Black);
+            gameOverScreen.Draw(window, gameManager.GetScore());
+            window.display();
+            continue;
+        }
 
         gameManager.Input();
 
@@ -50,6 +58,7 @@ int main()
 
         gameManager.CheckSnakeSelfCollision(snake);
         gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
+       
         if (gameManager.CheckSnakeFruitCollision(snake, fruit)) {
             fruit.RespawnFruit(windowWidth, windowHeight);
             snake.IncrementTail();

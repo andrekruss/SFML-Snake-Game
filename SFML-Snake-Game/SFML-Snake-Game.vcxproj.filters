@@ -36,6 +36,9 @@
     <ClCompile Include="Enums\eDirection.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Classes\GameOverScreen\GameOverScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Classes\Map\Map.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enums\eFruitType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\GameOverScreen\GameOverScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

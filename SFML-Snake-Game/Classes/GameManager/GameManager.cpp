@@ -31,16 +31,17 @@ bool GameManager::CheckGameOver()
 	return isGameOver;
 }
 
-void GameManager::CheckMapBorderCollision(int mapWidth, int mapHeight, sf::Vector2f snakeHeadPosition)
+bool GameManager::CheckMapBorderCollision(int mapWidth, int mapHeight, sf::Vector2f snakeHeadPosition)
 {
 	if (snakeHeadPosition.x >= mapWidth - 10 || snakeHeadPosition.x < 10) {
 		this->isGameOver = true;
-		return;
+		return true;
 	}
 	if (snakeHeadPosition.y >= mapHeight - 10 || snakeHeadPosition.y < 10) {
 		this->isGameOver = true;
-		return;
+		return true;
 	}
+	return false;
 }
 
 bool GameManager::CheckSnakeFruitCollision(Snake snake, Fruit fruit)
@@ -58,16 +59,17 @@ bool GameManager::CheckSnakeFruitCollision(Snake snake, Fruit fruit)
 	return false;
 }
 
-void GameManager::CheckSnakeSelfCollision(Snake snake)
+bool GameManager::CheckSnakeSelfCollision(Snake snake)
 {
 	sf::Vector2f snakeHeadPosition = snake.GetSnakeHeadPosition();
 	for (int i = 1; i < snake.GetSnakeSize(); i++) {
 		sf::Vector2f segmentPosition = snake.GetSnakeSegment(i).GetSnakeSegmentPosition();
 		if (snakeHeadPosition.x == segmentPosition.x && snakeHeadPosition.y == segmentPosition.y) {
 			this->isGameOver = true;
-			return;
+			return true;
 		}
 	}
+	return false;
 }
 
 int GameManager::GetScore()
