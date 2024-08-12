@@ -18,9 +18,10 @@ int main()
 
     Map map(windowWidth, windowHeight);
     Snake snake(windowWidth, windowHeight);
-    Fruit fruit(windowWidth, windowHeight);
+    Fruit fruit;
     GameManager gameManager;
     GameOverScreen gameOverScreen;
+    fruit.Setup(windowWidth, windowHeight, snake);
     gameOverScreen.Setup(windowWidth, windowHeight);
 
     int normalFruitScore = 10;
@@ -60,7 +61,7 @@ int main()
         gameManager.CheckMapBorderCollision(windowWidth, windowHeight, snake.GetSnakeHeadPosition());
        
         if (gameManager.CheckSnakeFruitCollision(snake, fruit)) {
-            fruit.RespawnFruit(windowWidth, windowHeight);
+            fruit.RespawnFruit(windowWidth, windowHeight, snake);
             snake.IncrementTail();
         }
 
